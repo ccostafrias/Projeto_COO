@@ -1,4 +1,7 @@
+package game;
+
 import java.awt.Color;
+import game.engine.*;
 
 /***********************************************************************/
 /*                                                                     */
