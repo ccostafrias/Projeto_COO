@@ -5,7 +5,7 @@ import game.systems.Drawable;
 import game.systems.Updatable;
 
 public abstract class Entity implements Drawable, Updatable {
-  public enum State {
+  protected enum State {
     INACTIVE,
     ACTIVE,
     EXPLODING
@@ -23,12 +23,28 @@ public abstract class Entity implements Drawable, Updatable {
     this.radius = radius;
   }
 
+  public Vec2 getPos() {
+    return this.pos;
+  }
+
+  public double getRadius() {
+    return this.radius;
+  }
+
   public void setState(State state) {
     this.state = state;
   }
 
-  public State getState() {
-    return this.state;
+  public boolean isActive() {
+    return this.state == State.ACTIVE;
+  }
+
+  public boolean isInactive() {
+    return this.state == State.INACTIVE;
+  }
+
+  public boolean isExploding() {
+    return this.state == State.EXPLODING;
   }
 
   public abstract void update(double dt);

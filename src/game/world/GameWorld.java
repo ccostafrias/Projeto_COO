@@ -1,7 +1,7 @@
 package game.world;
 
-import game.engine.GameLib;
 import game.entities.*;
+import game.engine.GameLib;
 import game.utils.Vec2;
 import game.systems.Drawable;
 
@@ -14,6 +14,7 @@ public class GameWorld implements Drawable {
 	public EnemyManager em;
 	public ProjectileManager pm;
   public BackgroundManager bm;
+  public CollisionManager cm;
 
   public GameWorld() {
     world = this;
@@ -23,6 +24,7 @@ public class GameWorld implements Drawable {
     this.em = new EnemyManager();
     this.pm = new ProjectileManager();
     this.bm = new BackgroundManager();
+    this.cm = new CollisionManager();
   }
 
   public static void spawnPlayerProjectile(Vec2 pos, Vec2 vel, int size) {
@@ -38,6 +40,7 @@ public class GameWorld implements Drawable {
     /* Já a variável "currentTime" nos dá o timestamp atual.  */
     currentTime = System.currentTimeMillis();
 
+    cm.update(delta);
     p.update(delta);
     em.update(delta);
     pm.update(delta);

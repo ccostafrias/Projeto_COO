@@ -3,10 +3,10 @@ package game.systems;
 import game.world.GameWorld;
 
 public class Explosion {
-    public double start = 0;
-    public double end = 0;
+    public double start;
+    public double end;
 
-    public Explosion(double dur) {
+    public void startExplosion(double dur) {
         this.start = GameWorld.currentTime;
         this.end = GameWorld.currentTime + dur;
     }

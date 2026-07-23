@@ -7,7 +7,7 @@ import game.utils.Vec2;
 import game.world.GameWorld;
 
 public class Player extends Entity {
-  Explosion explosion = new Explosion(500);
+  Explosion explosion = new Explosion();
   double nextShot = 0;
 
   public Player(Vec2 pos, Vec2 vel, double radius) {
@@ -56,6 +56,11 @@ public class Player extends Entity {
         this.state = State.ACTIVE;
       }
     }
+  }
+
+  public void hit() {
+    this.state = State.EXPLODING;
+    this.explosion.startExplosion(2000.0);
   }
 
   public void draw() {
