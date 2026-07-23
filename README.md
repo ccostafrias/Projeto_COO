@@ -6,6 +6,9 @@ EP realizado para a disciplina de Computação Orientada a Objetos do curso de S
 A partir da pasta `src`, rode:
 
 ```bash
-javac game/Main.java
-java game/Main
+javac -d out game/Main.java
+java -cp out game.Main   
 ```
+
+> `-d` : especifica o diretório de destino para os arquivos compilados (arquivos `.class`).
+> `-cp` : especifica o caminho da classe para a execução do programa.
