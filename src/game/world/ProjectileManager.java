@@ -2,6 +2,7 @@ package game.world;
 
 import java.util.*;
 import game.entities.*;
+import game.entities.Entity.State;
 import game.systems.*;
 import game.utils.Vec2;
 
@@ -30,10 +31,10 @@ public class ProjectileManager implements Updatable, Drawable {
 }
 
 class ProjectileList implements Updatable, Drawable {
-  private List<Projectile> projectiles;
+  private HashSet<Projectile> projectiles;
 
   public ProjectileList(){
-    this.projectiles = new ArrayList<>();
+    this.projectiles = new HashSet<>();
   }
 
   public void add(Projectile p) {
@@ -45,7 +46,13 @@ class ProjectileList implements Updatable, Drawable {
 
     while (it.hasNext()) {
       Projectile p = it.next();
+
       p.update(dt);
+      System.out.println(this.projectiles.size());
+
+      if (p.getState() == State.INACTIVE) {
+        it.remove();
+      }
     }
   }
 

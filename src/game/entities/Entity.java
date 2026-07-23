@@ -5,7 +5,7 @@ import game.systems.Drawable;
 import game.systems.Updatable;
 
 public abstract class Entity implements Drawable, Updatable {
-  protected enum State {
+  public enum State {
     INACTIVE,
     ACTIVE,
     EXPLODING
@@ -25,6 +25,10 @@ public abstract class Entity implements Drawable, Updatable {
 
   public void setState(State state) {
     this.state = state;
+  }
+
+  public State getState() {
+    return this.state;
   }
 
   public abstract void update(double dt);

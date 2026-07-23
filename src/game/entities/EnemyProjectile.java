@@ -10,10 +10,6 @@ public class EnemyProjectile extends Projectile {
     super(pos, vel, radius);
   }
 
-  public void update(double dt) {
-
-  }
-
   public void draw() {
     if (this.state == State.ACTIVE){
       GameLib.setColor(Color.RED);
