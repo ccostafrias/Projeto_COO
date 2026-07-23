@@ -24,6 +24,10 @@ public class EnemyManager implements Updatable, Drawable {
     }
   }
 
+  public Iterator<Enemy> iterator() {
+    return enemies.iterator();
+  }
+
   public void draw() {
     Iterator<Enemy> it = enemies.iterator();
 

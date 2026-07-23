@@ -67,5 +67,11 @@ public class Vec2 {
 
     return this.scaleLocal(norma);
   }
+
+  static public double dist(Vec2 a, Vec2 b) {
+    double dx = a.x - b.x;
+    double dy = a.y - b.y;
+    return Math.sqrt(dx * dx + dy * dy);
+  }
   
 }

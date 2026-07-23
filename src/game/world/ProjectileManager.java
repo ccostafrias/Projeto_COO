@@ -2,7 +2,6 @@ package game.world;
 
 import java.util.*;
 import game.entities.*;
-import game.entities.Entity.State;
 import game.systems.*;
 import game.utils.Vec2;
 
@@ -17,6 +16,14 @@ public class ProjectileManager implements Updatable, Drawable {
 
   public void spawnPlayerProjectile(Vec2 pos, Vec2 vel, int size) {
     this.playerProjectiles.add((new PlayerProjectile(pos, vel, size)));
+  }
+
+  public Iterator<Projectile> playerIterator() {
+    return this.playerProjectiles.iterator();
+  }
+
+  public Iterator<Projectile> enemyIterator() {
+    return this.enemiesProjectiles.iterator();
   }
 
   public void update(double dt) {
@@ -37,6 +44,10 @@ class ProjectileList implements Updatable, Drawable {
     this.projectiles = new HashSet<>();
   }
 
+  public Iterator<Projectile> iterator() {
+    return this.projectiles.iterator();
+  }
+
   public void add(Projectile p) {
     projectiles.add(p);
   }
@@ -50,7 +61,7 @@ class ProjectileList implements Updatable, Drawable {
       p.update(dt);
       System.out.println(this.projectiles.size());
 
-      if (p.getState() == State.INACTIVE) {
+      if (p.isInactive()) {
         it.remove();
       }
     }
