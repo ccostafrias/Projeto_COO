@@ -1,9 +1,9 @@
 package game.world;
 
-import java.util.*;
 import game.entities.*;
 import game.systems.*;
 import game.utils.Vec2;
+import java.util.*;
 
 public class ProjectileManager implements Updatable, Drawable {
   private ProjectileList playerProjectiles;
@@ -16,6 +16,10 @@ public class ProjectileManager implements Updatable, Drawable {
 
   public void spawnPlayerProjectile(Vec2 pos, Vec2 vel, int size) {
     this.playerProjectiles.add((new PlayerProjectile(pos, vel, size)));
+  }
+
+  public void spawnEnemyProjectile(Vec2 pos, Vec2 vel, int size) {
+    this.enemiesProjectiles.add((new EnemyProjectile(pos, vel, size)));
   }
 
   public Iterator<Projectile> playerIterator() {
