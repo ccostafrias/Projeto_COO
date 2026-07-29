@@ -1,9 +1,9 @@
 package game.world;
 
-import game.entities.*;
 import game.engine.GameLib;
-import game.utils.Vec2;
+import game.entities.*;
 import game.systems.Drawable;
+import game.utils.Vec2;
 
 public class GameWorld implements Drawable {
   public static GameWorld world;
@@ -11,8 +11,8 @@ public class GameWorld implements Drawable {
   public static long currentTime;
 
   public Player p;
-	public EnemyManager em;
-	public ProjectileManager pm;
+  public EnemyManager em;
+  public ProjectileManager pm;
   public BackgroundManager bm;
   public CollisionManager cm;
 
@@ -29,6 +29,10 @@ public class GameWorld implements Drawable {
 
   public static void spawnPlayerProjectile(Vec2 pos, Vec2 vel, int size) {
     world.pm.spawnPlayerProjectile(pos, vel, size);
+  }
+
+  public static void spawnEnemyProjectile(Vec2 pos, Vec2 vel, int size) {
+    world.pm.spawnEnemyProjectile(pos, vel, size);
   }
 
   public void update() {
