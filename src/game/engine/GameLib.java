@@ -102,6 +102,54 @@ public class GameLib {
 		
 		g.drawOval(x, y, width, height);
 	}
+
+	public static void drawTriangle(double x1, double y1, double radius, double angle) {
+		double[] x = new double[3];
+    double[] y = new double[3];
+
+    for (int i = 0; i < 3; i++) {
+			double a = i * 2 * Math.PI / 3 + angle;
+
+			x[i] = x1 + radius * Math.cos(a);
+			y[i] = y1 + radius * Math.sin(a);
+    }
+
+    drawLine(x[0], y[0], x[1], y[1]);
+    drawLine(x[1], y[1], x[2], y[2]);
+    drawLine(x[2], y[2], x[0], y[0]);
+	}
+
+	public static void drawRect(double x1, double y1, double w, double h, double angle) {
+    double hw = w / 2.0;
+    double hh = h / 2.0;
+
+    double cos = Math.cos(angle);
+    double sin = Math.sin(angle);
+
+    double[] x = new double[4];
+    double[] y = new double[4];
+
+    // canto superior esquerdo
+    x[0] = x1 + (-hw * cos - -hh * sin);
+    y[0] = y1 + (-hw * sin + -hh * cos);
+
+    // canto superior direito
+    x[1] = x1 + ( hw * cos - -hh * sin);
+    y[1] = y1 + ( hw * sin + -hh * cos);
+
+    // canto inferior direito
+    x[2] = x1 + ( hw * cos - hh * sin);
+    y[2] = y1 + ( hw * sin + hh * cos);
+
+    // canto inferior esquerdo
+    x[3] = x1 + (-hw * cos - hh * sin);
+    y[3] = y1 + (-hw * sin + hh * cos);
+
+    drawLine(x[0], y[0], x[1], y[1]);
+    drawLine(x[1], y[1], x[2], y[2]);
+    drawLine(x[2], y[2], x[3], y[3]);
+    drawLine(x[3], y[3], x[0], y[0]);
+	}
 	
 	public static void drawDiamond(double x, double y, double radius){
 		
