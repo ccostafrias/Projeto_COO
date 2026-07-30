@@ -45,7 +45,17 @@ public class EnemyWorm extends Enemy {
         }
 
         if (shootNow) {
-            
+            double [] angles = { Math.PI/2 + Math.PI/8, Math.PI/2, Math.PI/2 - Math.PI/8 };
+
+            for (int k = 0; k < angles.length; k++) {
+                
+                double a = angles[k] + Math.random() * Math.PI/6 - Math.PI/12;
+                double vx = Math.cos(a);
+                double vy = Math.sin(a);
+    
+                GameWorld.spawnEnemyProjectile(new Vec2(this.pos), new Vec2(vx, vy).scaleLocal(0.3), 2);
+            }
+
         }
     }
 

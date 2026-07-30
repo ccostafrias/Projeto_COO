@@ -20,12 +20,12 @@ public class EnemyCircle extends Enemy {
         this.pos.y += this.speed * Math.sin(this.angle) * dt * (-1.0);
         this.angle += this.rv * dt;
     }
-    
+
     @Override
     protected void shoot() {
         if (GameWorld.currentTime > this.nextShoot) {
-            
-            this.nextShoot = GameWorld.currentTime + 200 + Math.random() * 500;
+            GameWorld.spawnEnemyProjectile(new Vec2(this.pos), new Vec2(Math.cos(this.angle) * 0.45, Math.sin(this.angle) * 0.45 * (-1.0)), 2);
+            this.nextShoot = (long) GameWorld.currentTime + 200 + Math.random() * 500;
         }
     }
 
