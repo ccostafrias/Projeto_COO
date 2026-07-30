@@ -11,7 +11,7 @@ public class PlayerProjectile extends Projectile {
   }
 
   public void draw() {
-    if (this.state == State.ACTIVE){
+    if (this.isActive()){
       
       GameLib.setColor(Color.GREEN);
       GameLib.drawLine(this.pos.x, this.pos.y - 5, this.pos.x, this.pos.y + 5);

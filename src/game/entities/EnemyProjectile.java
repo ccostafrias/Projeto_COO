@@ -11,7 +11,7 @@ public class EnemyProjectile extends Projectile {
   }
 
   public void draw() {
-    if (this.state == State.ACTIVE){
+    if (this.isActive()){
       GameLib.setColor(Color.RED);
       GameLib.drawCircle(this.pos.x, this.pos.y, this.radius);
     }

@@ -9,7 +9,7 @@ public abstract class Projectile extends Entity {
   }
 
   public void update(double dt) {
-    if (this.state == State.ACTIVE){
+    if (this.isActive()){
         
       /* verificando se projétil saiu da tela */
       if(this.pos.y  < 0 || this.pos.y > GameLib.HEIGHT) {

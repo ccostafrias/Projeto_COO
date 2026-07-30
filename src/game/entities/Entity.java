@@ -8,7 +8,8 @@ public abstract class Entity implements Drawable, Updatable {
   protected enum State {
     INACTIVE,
     ACTIVE,
-    EXPLODING
+    EXPLODING,
+    INVULNERABLE
   }
 
   protected Vec2 pos;
@@ -39,12 +40,20 @@ public abstract class Entity implements Drawable, Updatable {
     return this.state == State.ACTIVE;
   }
 
+  public boolean isInvulnerable() {
+    return this.state == State.INVULNERABLE;
+  }
+
   public boolean isInactive() {
     return this.state == State.INACTIVE;
   }
 
   public boolean isExploding() {
     return this.state == State.EXPLODING;
+  }
+
+  public boolean isAlive() {
+    return this.isActive() || this.isInvulnerable();
   }
 
   public abstract void update(double dt);
