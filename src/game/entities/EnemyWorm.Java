@@ -69,8 +69,7 @@ public class EnemyWorm extends Enemy {
     @Override
     public void draw() {
         if (this.isExploding()) {
-            double alpha = (GameWorld.currentTime - explosion.start) / (explosion.end - explosion.start);
-            GameLib.drawExplosion(this.pos.x, this.pos.y, alpha);
+            this.explosion.draw();
         } else if (this.isActive()) {
             GameLib.setColor(Color.MAGENTA);
             GameLib.drawDiamond(this.pos.x, this.pos.y, this.radius);

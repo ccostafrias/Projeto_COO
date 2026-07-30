@@ -19,7 +19,7 @@ public abstract class Enemy extends Entity {
 
   public void hit() {
     this.state = State.EXPLODING;
-    explosion.startExplosion(500);
+    this.explosion.startExplosion(500, this.pos);
   }
 
   public void update(double dt) {
