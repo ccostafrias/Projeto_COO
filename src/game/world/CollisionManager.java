@@ -38,13 +38,15 @@ public class CollisionManager implements Updatable {
 
   /* colisões player - projeteis (inimigo) */
   private void checkPlayerEnemyProjectilesCollision() {
-    Iterator<Projectile> it = GameWorld.world.pm.enemyIterator();
-
-    while (it.hasNext()) {
-      Projectile projectile = it.next();
-
-      if (checkCollision(GameWorld.world.p, projectile)) {
-        GameWorld.world.p.hit();
+    if (GameWorld.world.p.isActive()){
+      Iterator<Projectile> it = GameWorld.world.pm.enemyIterator();
+  
+      while (it.hasNext()) {
+        Projectile projectile = it.next();
+  
+        if (checkCollision(GameWorld.world.p, projectile)) {
+          GameWorld.world.p.hit();
+        }
       }
     }
   }
