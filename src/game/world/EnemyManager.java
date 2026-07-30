@@ -1,8 +1,10 @@
 package game.world;
 
 import java.util.*;
+
+import game.engine.Drawable;
+import game.engine.Updatable;
 import game.entities.*;
-import game.systems.*;
 
 public class EnemyManager implements Updatable, Drawable {
   private List<Enemy> enemies;

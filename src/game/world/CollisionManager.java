@@ -4,8 +4,8 @@ import java.util.*;
 
 import game.entities.Entity;
 import game.entities.Projectile;
+import game.engine.Updatable;
 import game.entities.Enemy;
-import game.systems.Updatable;
 import game.utils.Vec2;
 
 /***************************/

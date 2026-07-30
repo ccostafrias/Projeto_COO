@@ -3,9 +3,9 @@ package game.world;
 import java.util.*;
 import java.awt.Color;
 
+import game.engine.Drawable;
+import game.engine.Updatable;
 import game.engine.GameLib;
-import game.systems.Drawable;
-import game.systems.Updatable;
 import game.utils.Vec2;
 
 public class BackgroundManager implements Drawable, Updatable {

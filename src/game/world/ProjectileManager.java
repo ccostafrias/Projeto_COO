@@ -1,9 +1,11 @@
 package game.world;
 
-import game.entities.*;
-import game.systems.*;
-import game.utils.Vec2;
 import java.util.*;
+
+import game.engine.Drawable;
+import game.engine.Updatable;
+import game.entities.*;
+import game.utils.Vec2;
 
 public class ProjectileManager implements Updatable, Drawable {
   private ProjectileList playerProjectiles;
@@ -61,7 +63,6 @@ class ProjectileList implements Updatable, Drawable {
 
     while (it.hasNext()) {
       Projectile p = it.next();
-
       p.update(dt);
 
       if (p.isInactive()) {

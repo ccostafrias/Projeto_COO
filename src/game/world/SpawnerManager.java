@@ -3,8 +3,8 @@ package game.world;
 import java.util.*;
 
 import game.engine.GameLib;
+import game.engine.Updatable;
 import game.entities.*;
-import game.systems.Updatable;
 import game.utils.Vec2;
 
 public class SpawnerManager implements Updatable {

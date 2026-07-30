@@ -1,8 +1,8 @@
 package game.entities;
 
+import game.engine.Drawable;
+import game.engine.Updatable;
 import game.utils.Vec2;
-import game.systems.Drawable;
-import game.systems.Updatable;
 
 public abstract class Entity implements Drawable, Updatable {
   protected enum State {

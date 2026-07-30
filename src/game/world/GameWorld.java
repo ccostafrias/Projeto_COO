@@ -1,8 +1,8 @@
 package game.world;
 
 import game.engine.GameLib;
+import game.engine.Drawable;
 import game.entities.*;
-import game.systems.Drawable;
 import game.utils.Vec2;
 
 public class GameWorld implements Drawable {

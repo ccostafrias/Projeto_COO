@@ -1,6 +1,7 @@
 package game.entities;
 
 import java.awt.Color;
+
 import game.engine.GameLib;
 import game.systems.Explosion;
 import game.utils.Vec2;
