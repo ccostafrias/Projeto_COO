@@ -21,6 +21,10 @@ public class EnemyManager implements Updatable, Drawable {
     while (it.hasNext()) {
       Enemy e = it.next();
       e.update(dt);
+
+      if (e.isInactive()) {
+        it.remove();
+      }
     }
   }
 

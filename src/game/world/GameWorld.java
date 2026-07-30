@@ -15,6 +15,7 @@ public class GameWorld implements Drawable {
   public ProjectileManager pm;
   public BackgroundManager bm;
   public CollisionManager cm;
+  public SpawnerManager sm;
 
   public GameWorld() {
     world = this;
@@ -25,14 +26,19 @@ public class GameWorld implements Drawable {
     this.pm = new ProjectileManager();
     this.bm = new BackgroundManager();
     this.cm = new CollisionManager();
+    this.sm = new SpawnerManager();
   }
 
   public static void spawnPlayerProjectile(Vec2 pos, Vec2 vel, int size) {
     world.pm.spawnPlayerProjectile(pos, vel, size);
   }
-
+  
   public static void spawnEnemyProjectile(Vec2 pos, Vec2 vel, int size) {
     world.pm.spawnEnemyProjectile(pos, vel, size);
+  }
+  
+  public static void spawnEnemy(Enemy e) {
+    world.em.add(e);
   }
 
   public void update() {
@@ -44,6 +50,7 @@ public class GameWorld implements Drawable {
     /* Já a variável "currentTime" nos dá o timestamp atual.  */
     currentTime = System.currentTimeMillis();
 
+    sm.update(delta);
     cm.update(delta);
     p.update(delta);
     em.update(delta);

@@ -63,7 +63,6 @@ class ProjectileList implements Updatable, Drawable {
       Projectile p = it.next();
 
       p.update(dt);
-      System.out.println(this.projectiles.size());
 
       if (p.isInactive()) {
         it.remove();

@@ -2,12 +2,19 @@ package game.entities;
 
 import game.systems.Explosion;
 import game.utils.Vec2;
+import game.world.GameWorld;
 
-public class Enemy extends Entity {
+public abstract class Enemy extends Entity {
   Explosion explosion = new Explosion();
 
-  public Enemy(Vec2 pos, Vec2 vel, double radius) {
-    super(pos, vel, radius);
+  protected double speed;
+  protected double angle;
+  protected double rv;
+
+  public Enemy(Vec2 pos, double speed, double angle, double radius) {
+    super(pos, new Vec2(0, 0), radius); 
+    this.speed = speed;
+    this.angle = angle;
   }
 
   public void hit() {
@@ -16,10 +23,21 @@ public class Enemy extends Entity {
   }
 
   public void update(double dt) {
+    if (this.isExploding()) {
+      if (GameWorld.currentTime > explosion.end) {
+        this.setState(State.INACTIVE);
+      }
+      return;
+    }
 
+    if (this.isActive()) {
+      move(dt);
+      shoot(); 
+      checkBounds();
+    }
   }
 
-  public void draw() {
-    
-  }
+  protected abstract void move(double dt);
+  protected abstract void shoot();
+  protected abstract void checkBounds();  
 }

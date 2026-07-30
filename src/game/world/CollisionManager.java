@@ -28,7 +28,8 @@ public class CollisionManager implements Updatable {
       while (it.hasNext()) {
         Enemy e = it.next();
 
-        if (checkCollision(GameWorld.world.p, e)) {
+        if (e.isActive() && checkCollision(GameWorld.world.p, e)) {
+          GameWorld.world.p.hit();
           e.hit();
         }
       }    
@@ -60,7 +61,7 @@ public class CollisionManager implements Updatable {
       while (e_it.hasNext()) {
         Enemy enemy = e_it.next();
 
-        if (checkCollision(enemy, projectile)) {
+        if (enemy.isActive() && checkCollision(enemy, projectile)) {
           enemy.hit();
         }
       }
