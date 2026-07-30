@@ -50,7 +50,7 @@ class EnemyCircleSpawner extends EnemySpawner {
   }
 
   public void spawnEnemy() {
-    Enemy e = new EnemyCircle(new Vec2(Math.random() * (GameLib.WIDTH - 20.0) + 10.0, -10.0), 0.20 + Math.random() * 0.15, (3 * Math.PI) / 2);
+    Enemy e = new EnemyCircle(new Vec2(Math.random() * (GameLib.WIDTH - 20.0) + 10.0, -10.0), 0.20 + Math.random() * 0.15, -(3 * Math.PI) / 2);
     GameWorld.spawnEnemy(e);
 
     nextEnemy = GameWorld.currentTime + 500;
@@ -66,7 +66,7 @@ class EnemyWormSpawner extends EnemySpawner {
   }
 
   public void spawnEnemy() {
-    Enemy e = new EnemyWorm(new Vec2(spawnX, -10.0), 0.42, (3 * Math.PI) / 2);
+    Enemy e = new EnemyWorm(new Vec2(spawnX, -10.0), 0.42, -(3 * Math.PI) / 2);
     GameWorld.spawnEnemy(e);
     this.count++;
 

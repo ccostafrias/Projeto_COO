@@ -73,5 +73,12 @@ public class Vec2 {
     double dy = a.y - b.y;
     return Math.sqrt(dx * dx + dy * dy);
   }
+
+  static public Vec2 polarToVec(double a, double len) {
+    double vx = Math.cos(a);
+    double vy = Math.sin(a);
+    
+    return new Vec2(vx, vy).scaleLocal(len);
+  }
   
 }

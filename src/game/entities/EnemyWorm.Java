@@ -17,14 +17,14 @@ public class EnemyWorm extends Enemy {
         double previousY = this.pos.y;
         
         this.pos.x += this.speed * Math.cos(this.angle) * dt;
-        this.pos.y += this.speed * Math.sin(this.angle) * dt * (-1.0);
+        this.pos.y += this.speed * Math.sin(this.angle) * dt;
         this.angle += this.rv * dt;
 
         double threshold = GameLib.HEIGHT * 0.30;
 
         if (previousY < threshold && this.pos.y >= threshold) {
-            if (this.pos.x < GameLib.WIDTH / 2) this.rv = 0.003;
-            else this.rv = -0.003;
+            if (this.pos.x < GameLib.WIDTH / 2) this.rv = -0.003;
+            else this.rv = 0.003;
         }
     }
 
@@ -32,13 +32,13 @@ public class EnemyWorm extends Enemy {
     protected void shoot() {
         boolean shootNow = false;
 
-        if (this.rv > 0 && Math.abs(this.angle - 3 * Math.PI) < 0.05) {
+        if (this.rv < 0 && Math.abs(this.angle + 3*Math.PI) < 0.05) {
             this.rv = 0.0;
             this.angle = 3 * Math.PI;
             shootNow = true;
         }
         
-        if (this.rv < 0 && Math.abs(this.angle) < 0.05) {
+        if (this.rv > 0 && Math.abs(this.angle) < 0.05) {
             this.rv = 0.0;
             this.angle = 0.0;
             shootNow = true;
@@ -48,12 +48,9 @@ public class EnemyWorm extends Enemy {
             double [] angles = { Math.PI/2 + Math.PI/8, Math.PI/2, Math.PI/2 - Math.PI/8 };
 
             for (int k = 0; k < angles.length; k++) {
-                
                 double a = angles[k] + Math.random() * Math.PI/6 - Math.PI/12;
-                double vx = Math.cos(a);
-                double vy = Math.sin(a);
-    
-                GameWorld.spawnEnemyProjectile(new Vec2(this.pos), new Vec2(vx, vy).scaleLocal(0.3), 2);
+
+                GameWorld.spawnEnemyProjectile(new Vec2(this.pos), Vec2.polarToVec(a, 0.3), 2);
             }
 
         }
