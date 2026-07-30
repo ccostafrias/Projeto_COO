@@ -45,6 +45,7 @@ public class EnemyWorm extends Enemy {
         }
 
         if (shootNow) {
+            
         }
     }
 

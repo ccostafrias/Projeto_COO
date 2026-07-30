@@ -4,6 +4,7 @@ import game.utils.Vec2;
 import game.engine.GameLib;
 import game.world.GameWorld; 
 import java.awt.Color;
+
 public class EnemyCircle extends Enemy {
     private double nextShoot; 
 
@@ -19,8 +20,9 @@ public class EnemyCircle extends Enemy {
         this.pos.y += this.speed * Math.sin(this.angle) * dt * (-1.0);
         this.angle += this.rv * dt;
     }
+    
     @Override
-        protected void shoot() {
+    protected void shoot() {
         if (GameWorld.currentTime > this.nextShoot) {
             
             this.nextShoot = GameWorld.currentTime + 200 + Math.random() * 500;
