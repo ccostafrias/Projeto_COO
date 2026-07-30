@@ -13,8 +13,8 @@ public class SpawnerManager implements Updatable {
   public SpawnerManager() {
     this.spawners = new ArrayList<>();
 
-    this.spawners.add(new EnemyCircleSpawner());
-    this.spawners.add(new EnemyWormSpawner());
+    this.spawners.add(new EnemyCircleSpawner(2000));
+    this.spawners.add(new EnemyWormSpawner(7000));
   }
 
   public void update(double dt) {
@@ -31,7 +31,11 @@ public class SpawnerManager implements Updatable {
 }
 
 abstract class EnemySpawner {
-  protected double nextEnemy = 0;
+  protected double nextEnemy;
+
+  public EnemySpawner(int delay) {
+    this.nextEnemy = GameWorld.currentTime + delay;
+  }
 
   public boolean canSpawn() {
     return GameWorld.currentTime > nextEnemy;
@@ -41,6 +45,10 @@ abstract class EnemySpawner {
 }
 
 class EnemyCircleSpawner extends EnemySpawner {
+  public EnemyCircleSpawner(int delay) {
+    super(delay);
+  }
+
   public void spawnEnemy() {
     Enemy e = new EnemyCircle(new Vec2(Math.random() * (GameLib.WIDTH - 20.0) + 10.0, -10.0), 0.20 + Math.random() * 0.15, (3 * Math.PI) / 2);
     GameWorld.spawnEnemy(e);
@@ -52,6 +60,10 @@ class EnemyCircleSpawner extends EnemySpawner {
 class EnemyWormSpawner extends EnemySpawner {
   int count = 0;
   double spawnX = GameLib.WIDTH * 0.20;
+
+  public EnemyWormSpawner(int delay) {
+    super(delay);
+  }
 
   public void spawnEnemy() {
     Enemy e = new EnemyWorm(new Vec2(spawnX, -10.0), 0.42, (3 * Math.PI) / 2);
